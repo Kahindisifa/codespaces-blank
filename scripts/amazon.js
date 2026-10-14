@@ -1,28 +1,11 @@
+import {products} from '../data/products.js'
 
 
-let products = [{
-    image:'images/products/athletic-cotton-socks-6-pairs.jpg',
-    name: 'Black and Gray Athletic Cotton Socks - 6 Pairs',
-    rating:{
-        stars:4.5,
-        count:87
-    },
-    priceCents:1090
-
-},{
-    image:'images/products/intermediate-composite-basketball.jpg',
-    name:'Intermediate Size Basketball',
-    rating:{
-        stars:4,
-        count:127
-    },
-    priceCents:2095
-}]
-
-displayHTML = ''
+let displayHTML = ''
 
 products.forEach((product) => {
-    displayHTML += `<div class="product-container">
+
+    displayHTML += `<div class="product-container js-product-container">
           <div class="product-image-container">
             <img class="product-image"
               src="${product.image}">
@@ -34,7 +17,7 @@ products.forEach((product) => {
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.stars * 10} .png">
+              src="images/ratings/rating-${product.rating.stars * 10}.png">
             <div class="product-rating-count link-primary">
               ${product.rating.count}
             </div>
@@ -72,4 +55,6 @@ products.forEach((product) => {
         </div>
     `
 })
-document.querySelectorAll('.js-product-container').innerHTML = displayHTML
+
+
+document.querySelector('.js-products-grid').innerHTML = displayHTML
