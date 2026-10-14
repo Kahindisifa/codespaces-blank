@@ -1,5 +1,7 @@
 import {products} from '../data/products.js'
 
+import {cart} from './cart.js'
+
 
 let displayHTML = ''
 
@@ -49,7 +51,7 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart-button">
             Add to Cart
           </button>
         </div>
@@ -58,3 +60,10 @@ products.forEach((product) => {
 
 
 document.querySelector('.js-products-grid').innerHTML = displayHTML
+
+document.querySelectorAll('.js-add-to-cart-button').forEach((buttonEl) => {
+  buttonEl.addEventListener('click', () => {
+    console.log('button clicked')
+  })
+})
+
