@@ -3,6 +3,7 @@ import {products} from '../data/products.js'
 import {cart} from './cart.js'
 
 
+
 let displayHTML = ''
 
 products.forEach((product) => {
@@ -51,7 +52,7 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart-button">
+          <button class="add-to-cart-button button-primary js-add-to-cart-button" data-product-id="${product.id}">
             Add to Cart
           </button>
         </div>
@@ -61,9 +62,29 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid').innerHTML = displayHTML
 
-document.querySelectorAll('.js-add-to-cart-button').forEach((buttonEl) => {
-  buttonEl.addEventListener('click', () => {
-    console.log('button clicked')
-  })
-})
+let quantity = 0
+
+let matchingItem
+
+document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
+  button.addEventListener('click', () => {
+    let productId = button.dataset.productId
+    cart.forEach((item) => {
+      if(productId === item.id){
+        matchingItem = item
+      }
+    })
+    if(matchingItem){
+      matchingItem.quantity += 1
+    }else{
+      cart.push({
+        id:productId,
+        quantity:1
+      })
+    }
+    console.log(cart)
+
+  })})
+    
+    
 
